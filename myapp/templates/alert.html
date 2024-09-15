@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+<style>
+  .col-half-offset{
+      margin-left:4.166666667%
+  }
+
+  .card {
+    {% comment %} margin-top: 20px; {% endcomment %}
+    position: relative;
+    max-heigth: 410px;
+    border: 1px solid #ff6e4e;
+    box-shadow: 0 0 10px 3px #ff6e4e;
+  }
+  {% comment %} .card:first-of-type {
+    margin-right: 1em;
+  } {% endcomment %}
+  img {
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+  }
+  
+  /* card with triangle */
+  .triangle-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }   
+  .triangle {
+    float: right;
+    position: relative;
+    border-style: solid;
+    border-width: 0 105px 105px 0;
+    border-color: transparent #f5431a transparent transparent;
+    text-align: center;
+  }    
+  .triangle-text {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: -105px;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  
+  /* card with ribbon */
+  .ribbon {
+    position: absolute;
+    right: 0; top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    width: 100px; 
+    height: 100px;
+    text-align: right;
+  }
+  
+  /* card with ribbon */
+  .ribbon span {
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 25px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 115px;
+    display: block;
+    background: green;
+    color:white;
+    box-shadow: 0 0 10px 3px #ff6e4e;
+    position: absolute;
+    top: 20px; right: -25px;
+  }
+</style>
+
+<section class="section-services section-t8">
+    <div class="container">
+    <h3>Set Alert</h3><hr>
+        <div class="form">
+            <form class="form-a" action="{% url 'send_alert' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                  
+                <div class="col-md-10 mb-2">
+                  <div class="form-group">
+                  <label class="pb-2" for="Type">Product Name</label>
+                  <input type="name" class="form-control form-control-a" placeholder="Enter Your designated Product Name" name="name">
+                  </div>
+              </div>
+                <div class="col-md-10 mb-2">
+                    <div class="form-group">
+                    <label class="pb-2" for="Type">Email</label>
+                    <input type="email" class="form-control form-control-a" placeholder="Enter Your Email Here" name="email">
+                    </div>
+                </div>
+
+
+                <div class="col-md-10 mb-2">
+                    <div class="form-group">
+                    <label class="pb-2" for="Type">Traget Price</label>
+                    <input type="number" class="form-control form-control-a" placeholder="Enter Your Targeted Price" name="price">
+                    </div>
+                </div>
+                
+                </div>
+                <div class="col-md-2 mt-4">
+                    <button type="submit" class="btn btn-primary">Set Alert</button>
+                </div>
+            </form>
+        
+      </section><!-- End Latest Properties Section -->
+        </div>
+</div>
+
+
+{% include 'footer.html' %}
+{% endblock  %} 
